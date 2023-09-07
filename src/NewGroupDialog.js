@@ -14,7 +14,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Checkbox from '@mui/material/Checkbox';
 
 // Function that creates a dialog window when you want to create a new group
-export default function NewGroupDialog({open, close, showError, setGroupsUpdated, user}) {
+export default function NewGroupDialog({open, close, showError, setGroupsUpdated, user, clientListVersion}) {
   const [groupname, setGroupname] = React.useState("");
   const [checked, setChecked] = React.useState([]);
   const [version, setVersion] = useState(0);
@@ -26,12 +26,12 @@ export default function NewGroupDialog({open, close, showError, setGroupsUpdated
        headers: {'Authorization': 'Bearer ' + user.authToken}
     }).then(res => res.json()).then(response => {
       if (response.status === 'success') {
-      setClientList(response.data.clients);
+        setClientList(response.data.clients);
     }else {
       showError(response.data.message);
     }
     });
-  }, [user,version]);
+  }, [user, version, clientListVersion]);
 
   const close2 = () =>{
     setGroupname("");

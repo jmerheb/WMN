@@ -10,7 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Typography } from '@mui/material';
 
 // Function made to organize Group section along with its buttons
-export default function GroupsView({user, showError, selectedGroup, setSelectedGroup}) {
+export default function GroupsView({user, showError, selectedGroup, setSelectedGroup, clientListVersion}) {
   const [groupList, setGroupList] = useState([]);
   const [newGroupOpen, setNewGroupOpen] = useState(false);
   const [deleteGroupOpen, setDeleteGroupOpen] = useState(false);
@@ -55,7 +55,7 @@ export default function GroupsView({user, showError, selectedGroup, setSelectedG
       </Container>
       <NewGroupDialog open={newGroupOpen} 
                         close={() => setNewGroupOpen(false)} user={user}
-                        setGroupsUpdated={() => setVersion(version + 1)} />
+                        setGroupsUpdated={() => setVersion(version + 1)} clientListVersion={clientListVersion} />
       <DeleteGroupDialog open={deleteGroupOpen} 
                         close={() => setDeleteGroupOpen(false)} user={user} group={selectedGroup}
                         setDeleteGroupOpen={() => setVersion(version + 1)} /> 

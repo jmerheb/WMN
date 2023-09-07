@@ -10,7 +10,7 @@ import DeleteClientDialog from './DeleteClientDialog';
 import { Typography } from '@mui/material';
 
 // Function made to organize Client section along with its buttons
-export default function ClientsView({user, showError, selectedClient, setSelectedClient}) {
+export default function ClientsView({user, showError, selectedClient, setSelectedClient, notifyClientListUpdated}) {
   const [clientList, setClientList] = useState([]);
   const [newClientOpen, setNewClientOpen] = useState(false);
   const [deleteClientOpen, setDeleteClientOpen] = useState(false);
@@ -35,6 +35,11 @@ export default function ClientsView({user, showError, selectedClient, setSelecte
     });
   }, [user,version]);
 
+  const setClientsUpdated = () => {
+    setVersion(version + 1);
+    notifyClientListUpdated();
+  }
+
   return (
     <>
       <Container maxWidth="lg" >
@@ -55,15 +60,9 @@ export default function ClientsView({user, showError, selectedClient, setSelecte
       </Container>
       <NewClientDialog open={newClientOpen} 
                         close={() => setNewClientOpen(false)} user={user}
-                        setClientsUpdated={() => setVersion(version + 1)} />
+                        setClientsUpdated={setClientsUpdated} />
       <DeleteClientDialog open={deleteClientOpen} 
                         close={() => setDeleteClientOpen(false)} user={user} client={selectedClient}
-                        setDeleteClientOpen={() => setVersion(version + 1)} /> 
+                        setDeleteClientOpen={() => setVersion(version + 1)} setClientsUpdated={setClientsUpdated} /> 
     </>);
-
 }
-
-// Other color choices
-// #454708 green
-// #470835 purple
-// #474675 blue

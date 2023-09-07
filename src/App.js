@@ -19,6 +19,7 @@ export default function App() {
   const [view, setView] = React.useState(null);
   const [errorOpen, setErrorOpen] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(null);
+  const [clientListVersion, setClientListVersion] = React.useState(0);
 
   React.useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -28,6 +29,10 @@ export default function App() {
       setView("main");
     }
   }, []);
+
+  function updateClientListVersion() {
+    setClientListVersion(clientListVersion + 1);
+  }
 
   function loginUser(username,authToken) {
     localStorage.setItem("user", username);
@@ -53,9 +58,9 @@ export default function App() {
   }
 
 /* logical-expression ? value-if-true : value-if-false */
-  if (view == "login") {
+  if (view === "login") {
     return <Login loginUser={loginUser} cancelLogin={cancelLogin}/>
-  } else if (view == "main" && user != null) {
+  } else if (view === "main" && user != null) {
     return (
        <div>
       <ProgressAppBar handleLogout={doLogout}/>
@@ -67,7 +72,8 @@ export default function App() {
             user={user} lg={3} 
             showError={showError}
             selectedGroup={selectedGroup}
-            setSelectedGroup={setSelectedGroup}/>
+            setSelectedGroup={setSelectedGroup}
+            clientListVersion={clientListVersion}/>
              </Grid>
         <Grid container lg={3}>
           {selectedGroup != null ? <GroupMessageList user={user} selectedGroup={selectedGroup}/> : null} 
@@ -77,7 +83,8 @@ export default function App() {
              user={user} lg={3} 
              showError={showError}
              selectedClient={selectedClient}
-             setSelectedClient={setSelectedClient}/>
+             setSelectedClient={setSelectedClient}
+             notifyClientListUpdated={updateClientListVersion}/>
              </Grid>
         <Grid container lg={3}>
           {selectedClient != null ? <MessageList user={user} selectedClient={selectedClient}/> : null} 

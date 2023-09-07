@@ -7,7 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 // Function that creates a dialog window when you want to delete a client
-export default function DeleteClientDialog({open, close, setDeleteClientOpen, user, client}) {
+export default function DeleteClientDialog({open, close, setDeleteClientOpen, user, client, setClientsUpdated}) {
   const [version, setVersion] = useState(0);
 
   const submit = (evt) => {
@@ -22,6 +22,7 @@ export default function DeleteClientDialog({open, close, setDeleteClientOpen, us
           if (status === 'success') {
             setDeleteClientOpen();
             setVersion(version + 1);
+            setClientsUpdated();
             close();
           } else {
             console.log(resp_obj.data.message);
@@ -37,7 +38,7 @@ export default function DeleteClientDialog({open, close, setDeleteClientOpen, us
         <DialogTitle>Delete a Client</DialogTitle>
         <DialogContent>
             <DialogContentText>
-            Are you sure you want to delete this client?
+            Are you sure you want to delete this client? 
             </DialogContentText>
         </DialogContent>
         <DialogActions>
