@@ -36,7 +36,7 @@ export default function Login({loginUser, cancelLogin}) {
     <AppBar position="static">
         <Toolbar sx={{bgcolor: '#0a0847'}}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            WMP Login
+            WMN Login
           </Typography>
           <Button color="inherit" onClick={cancelLogin}>Cancel</Button>
         </Toolbar>
