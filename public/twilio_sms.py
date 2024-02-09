@@ -3,8 +3,8 @@ import os
 from twilio.rest import Client
 # Set environment variables for your credentials
 # Read more at http://twil.io/secure
-account_sid = # Add your account SID here
-auth_token = # Add your auth token here
+account_sid = # Add this from twilio
+auth_token = # Add this from twilio
 
 def send_twilio_message(text_message, recipient):
   client = Client(account_sid, auth_token)
@@ -12,7 +12,7 @@ def send_twilio_message(text_message, recipient):
   print(recipient)
   message = client.messages.create(
     body=text_message,
-    from_="+18669365256",
+    from_= # Add this from twilio ,
     to= recipient 
   )
   return message.sid 
