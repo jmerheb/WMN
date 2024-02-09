@@ -4,7 +4,7 @@ Secure Messaging Webservice for Women’s Mentoring Network (WMN), Established N
 
 ## Authors
 
-This web application project is an ongoing collaboration made up of students from Manhattanville College who have taken the *Interactive Media-System Design* class.
+This web application project is an ongoing collaboration made by students from Manhattanville College who have taken the *Interactive Media-System Design* class.
 
 **Edelawit Yishak** - Developed initial application (2023)\
 **Jean Pierre Merheb** - Developed initial application (2023)
