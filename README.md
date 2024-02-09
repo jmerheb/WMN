@@ -22,7 +22,7 @@ When first loading the web app, the user is prompted with the login page to keep
 Once logged in, the main page is shown. All existing groups are on the left-side, and all client contacts are on the right-side. Buttons on the top of the page displayed allow the user to create/delete new groups or clients.
 
 <p align="center">
-  <img width="886" alt="Screenshot 2024-02-08 175536" src="https://github.com/jmerheb/WMN/assets/87794648/b8e2c032-4735-4811-a295-8493ba9631fd">
+  <img width="886" alt="Screenshot 2024-02-08 175536" src="https://github.com/jmerheb/WMN/assets/87794648/b71edf72-dc28-4afe-a4ba-12f9ae38f9fc">
 </p>
 
 When creating a new client, a dialog window will be displayed in the UI. The user will then be prompted to input the name and phone number of their new client. Once the user clicks create, the client will be displayed on the main page. 
